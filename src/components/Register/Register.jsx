@@ -1,4 +1,5 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { FaRegEye } from "react-icons/fa";
 import { NavLink } from "react-router";
 import auth from "../../auth/firebase/firebase.init";
 
@@ -6,10 +7,9 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     const target = event.target;
-    const displayName = target.name.value;
     const email = target.email.value;
     const password = target.password.value;
-    createUserWithEmailAndPassword(auth, email, password, displayName)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((results) => {
         console.log(results.user);
       })
@@ -48,7 +48,7 @@ const Register = () => {
               placeholder="Provide your email address"
             />
           </div>
-          <div className="my-4 flex flex-col gap-1.5 space-y-2">
+          <div className="relative my-4 flex flex-col gap-1.5 space-y-2">
             <label htmlFor="password" className="text-xl font-semibold">
               Password
             </label>
@@ -59,6 +59,9 @@ const Register = () => {
               id="password"
               placeholder="Provide your password"
             />
+            <span className="absolute top-14 right-6">
+              <FaRegEye />
+            </span>
           </div>
           <div className="flex items-center gap-3.5">
             <button className="rounded-2xl bg-amber-200 px-3.5 py-2.5">
