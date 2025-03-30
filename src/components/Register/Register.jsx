@@ -1,35 +1,20 @@
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { NavLink } from "react-router";
 import auth from "../../auth/firebase/firebase.init";
 
-const Login = () => {
-  const [user, setUser] = useState(null);
-  const provider = new GoogleAuthProvider();
-
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // const credential = GoogleAuthProvider.credentialFromResult(result);
-        //   const token = credential.accessToken;
-        //   const user = result.user;
-        console.log(result);
-        setUser(result.user);
-      })
-      .catch((e) => {
-        console.log(e);
-        setUser(null);
-      });
-  };
-
-  const handleSingOut = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("User Sign Out");
-        setUser(null);
+const Register = () => {
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const target = event.target;
+    const displayName = target.name.value;
+    const email = target.email.value;
+    const password = target.password.value;
+    createUserWithEmailAndPassword(auth, email, password, displayName)
+      .then((results) => {
+        console.log(results.user);
       })
       .catch((error) => {
-        console.log("Error", error);
+        console.log(error);
       });
   };
 
@@ -38,7 +23,19 @@ const Login = () => {
       <div className="mx-auto w-full max-w-lg space-y-2.5 py-3.5">
         <h1>Login Form</h1>
         <p>This is Login form for Firebase and Normal Felid</p>
-        <form onSubmit={handleGoogleSignIn}>
+        <form onSubmit={handleRegister}>
+          <div className="flex flex-col gap-1.5 space-y-2">
+            <label htmlFor="name" className="text-xl font-semibold">
+              Name
+            </label>
+            <input
+              className="rounded-xl bg-lime-200/35 px-3 py-2 text-xl outline outline-amber-100"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Provide your name"
+            />
+          </div>
           <div className="my-4 flex flex-col gap-1.5 space-y-2">
             <label htmlFor="email" className="text-xl font-semibold">
               Email Address
@@ -63,24 +60,19 @@ const Login = () => {
               placeholder="Provide your password"
             />
           </div>
-          <div className="flex flex-col gap-3.5">
-            <button
-              onClick={handleSingOut}
-              className="rounded-2xl bg-amber-200 px-3.5 py-2.5"
-            >
-              Login
+          <div className="flex items-center gap-3.5">
+            <button className="rounded-2xl bg-amber-200 px-3.5 py-2.5">
+              Create Account
             </button>
             <p>
-              If you don't registered{" "}
+              If you don't registered
               <NavLink
-                to="/register"
-                className="text-xl font-semibold text-teal-700"
+                to="/login"
+                className="pl-1.5 text-xl font-semibold text-teal-700"
               >
-                Create Account
+                Login
               </NavLink>
             </p>
-
-            {user ? "Valid" : "Not Valid"}
           </div>
         </form>
       </div>
@@ -88,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
