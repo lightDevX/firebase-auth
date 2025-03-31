@@ -1,9 +1,15 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useContext } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { NavLink } from "react-router";
+import { AuthContext } from "../../auth/contexts/AuthContext";
 import auth from "../../auth/firebase/firebase.init";
 
 const Register = () => {
+  const authName = useContext(AuthContext);
+
+  console.log(authName);
+
   const handleRegister = (event) => {
     event.preventDefault();
     const target = event.target;
