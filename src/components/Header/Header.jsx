@@ -1,5 +1,6 @@
-import React from "react";
+import moment from "moment";
 import { NavLink } from "react-router";
+import logo from "../../assets/media/images/logo.png";
 
 const Header = () => {
   const navLink = (
@@ -15,46 +16,27 @@ const Header = () => {
       </NavLink>
     </>
   );
-
+  console.log(navLink);
   return (
-    <div className="container mx-auto">
-      <div className="navbar bg-base-100 shadow-sm">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 pl-3.5 shadow"
-            >
-              {navLink}
-            </ul>
+    <>
+      <header>
+        <div className="flex flex-col items-center justify-between gap-3 py-5">
+          <div className="h-16 w-xs">
+            <img
+              src={logo}
+              alt="Web Logo"
+              className="h-full w-full object-contain"
+            />
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <p className="text-xl text-neutral-900/50">
+            Journalism Without Fear or Favour
+          </p>
+          <p className="text-2xl text-neutral-900/70">
+            {moment().format("dddd, MMMM Do YYYY").toString()}
+          </p>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navLink}</ul>
-        </div>
-        <div className="navbar-end">
-          <button>User</button>
-        </div>
-      </div>
-    </div>
+      </header>
+    </>
   );
 };
 
