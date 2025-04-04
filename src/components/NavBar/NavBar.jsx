@@ -4,10 +4,10 @@ import userIcon from "../../assets/media/images/user.png";
 const NavBar = () => {
   return (
     <>
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto my-6 flex items-center justify-between">
         <div></div>
         <div className="flex items-center justify-end gap-4">
-          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/career">Career</NavLink>
         </div>

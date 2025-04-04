@@ -1,11 +1,22 @@
 import React from "react";
-import Login from "../Login/Login";
+import LeftAside from "./HomeLayOut/LeftAside/LeftAside";
+import RightAside from "./HomeLayOut/RightAside/RightAside";
 
 const Home = () => {
   return (
-    <div>
-      <Login></Login>
-    </div>
+    <>
+      <div className="container mx-auto my-8">
+        <div className="grid md:grid-cols-12">
+          <aside className="col-span-3">
+            <LeftAside></LeftAside>
+          </aside>
+          <main className="col-span-6">Main container</main>
+          <aside className="col-span-3">
+            <RightAside></RightAside>
+          </aside>
+        </div>
+      </div>
+    </>
   );
 };
 
