@@ -6,7 +6,13 @@ const Category = ({ category }) => {
     <div>
       <NavLink
         to={`/category/${category_id}`}
-        className="rounded-md px-8 py-2.5 text-neutral-900/60 active:bg-neutral-800/50 active:text-neutral-900"
+        className={({ isActive }) =>
+          `rounded-md px-8 py-2.5 ${
+            isActive
+              ? "bg-neutral-800 text-neutral-100"
+              : "text-neutral-900/60 hover:bg-neutral-100"
+          }`
+        }
       >
         {category_name}
       </NavLink>

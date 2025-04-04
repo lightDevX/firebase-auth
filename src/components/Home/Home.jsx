@@ -1,5 +1,6 @@
 import React from "react";
 import LeftAside from "./HomeLayOut/LeftAside/LeftAside";
+import MainConatain from "./HomeLayOut/MainConatain/MainConatain";
 import RightAside from "./HomeLayOut/RightAside/RightAside";
 
 const Home = () => {
@@ -10,7 +11,9 @@ const Home = () => {
           <aside className="col-span-3">
             <LeftAside></LeftAside>
           </aside>
-          <main className="col-span-6">Main container</main>
+          <main className="col-span-6">
+            <MainConatain></MainConatain>
+          </main>
           <aside className="col-span-3">
             <RightAside></RightAside>
           </aside>

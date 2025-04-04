@@ -1,22 +1,7 @@
 import moment from "moment";
-import { NavLink } from "react-router";
 import logo from "../../assets/media/images/logo.png";
 
 const Header = () => {
-  const navLink = (
-    <>
-      <NavLink className="px-2 font-semibold hover:text-blue-400" to="/login">
-        Login
-      </NavLink>
-      <NavLink
-        className="px-2 font-semibold hover:text-blue-400"
-        to="/register"
-      >
-        Register
-      </NavLink>
-    </>
-  );
-  console.log(navLink);
   return (
     <>
       <header>

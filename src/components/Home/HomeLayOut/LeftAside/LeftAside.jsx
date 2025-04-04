@@ -12,7 +12,6 @@ const LeftAside = () => {
         );
         const data = await res.json();
         setCategories(data.data.news_category);
-        console.log(data.data.news_category);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
