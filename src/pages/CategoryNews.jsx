@@ -42,9 +42,8 @@ const CategoryNews = () => {
             />
           </div>
           <p className="mb-5 px-5 text-neutral-900">
-            {news.details.length > 200
-              ? news.details.slice(0, 200) + "  Read More..."
-              : news.details}
+            {news.details.slice(0, 200)} ... {""}
+            <span className="text-red-400">Read More </span>
           </p>
 
           <div className="px-5 outline outline-amber-100"></div>
