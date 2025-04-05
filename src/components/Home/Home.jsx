@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <div className="container mx-auto my-8">
-        <div className="grid md:grid-cols-12">
+        <div className="grid gap-3.5 md:grid-cols-12">
           <aside className="col-span-3">
             <LeftAside></LeftAside>
           </aside>
